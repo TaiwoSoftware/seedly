@@ -33,48 +33,50 @@ export default function Page() {
 
   return (
     <div className="container mx-auto p-4">
-      <table className="min-w-full bg-white border border-gray-200">
-        <thead>
-          <tr>
-            <th className="py-2 px-4 border-b">Names</th>
-            <th className="py-2 px-4 border-b">Phone numbers</th>
-            <th className="py-2 px-4 border-b">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td className="py-2 px-4 text-center border-b">{name}</td>
-            <td className="py-2 px-4 text-center border-b">{number}</td>
-            <td className="py-2 px-4 border-b">
-              <button 
-                className="bg-blue-500 text-white py-1 px-2 rounded" 
-                onClick={handleEdit}
-              >
-                Edit
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div className="overflow-x-auto">
+        <table className="min-w-full bg-white border border-gray-200">
+          <thead>
+            <tr>
+              <th className="py-2 px-4 border-b text-left">Names</th>
+              <th className="py-2 px-4 border-b text-left">Phone numbers</th>
+              <th className="py-2 px-4 border-b text-left">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="py-2 px-4 text-center border-b">{name}</td>
+              <td className="py-2 px-4 text-center border-b">{number}</td>
+              <td className="py-2 px-4 border-b">
+                <button 
+                  className="bg-blue-500 text-white py-1 px-2 rounded" 
+                  onClick={handleEdit}
+                >
+                  Edit
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       {isEditing && (
-        <div className="mt-4">
+        <div className="mt-4 flex flex-col md:flex-row md:items-center">
           <input 
             type="text" 
             value={newName} 
             onChange={(e) => setNewName(e.target.value)} 
             placeholder="Edit name" 
-            className="border py-2 px-4 rounded mr-2"
+            className="border py-2 px-4 rounded mb-2 md:mb-0 md:mr-2"
           />
           <input 
             type="text" 
             value={newNumber} 
             onChange={(e) => setNewNumber(e.target.value)} 
             placeholder="Edit number" 
-            className="border py-2 px-4 rounded mr-2"
+            className="border py-2 px-4 rounded mb-2 md:mb-0 md:mr-2"
           />
           <button 
-            className="bg-green-500 text-white py-1 px-2 rounded" 
+            className="bg-green-500 text-white py-1 px-2 rounded"
             onClick={handleSave}
           >
             Save
