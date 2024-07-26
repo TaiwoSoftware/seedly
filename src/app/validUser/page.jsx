@@ -1,17 +1,17 @@
-'use client'
-import { useState, useEffect } from 'react';
+"use client";
+import { useState, useEffect } from "react";
 
 export default function Page() {
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [name, setName] = useState("");
+  const [number, setNumber] = useState("");
   const [isEditing, setIsEditing] = useState(false);
-  const [newName, setNewName] = useState('');
-  const [newNumber, setNewNumber] = useState('');
+  const [newName, setNewName] = useState("");
+  const [newNumber, setNewNumber] = useState("");
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const storedName = localStorage.getItem('firstname');
-      const storedNumber = localStorage.getItem('number');
+    if (typeof window !== "undefined") {
+      const storedName = localStorage.getItem("firstname");
+      const storedNumber = localStorage.getItem("number");
       setName(storedName);
       setNumber(storedNumber);
     }
@@ -26,8 +26,8 @@ export default function Page() {
   const handleSave = () => {
     setName(newName);
     setNumber(newNumber);
-    localStorage.setItem('name', newName);
-    localStorage.setItem('number', newNumber);
+    localStorage.setItem("name", newName);
+    localStorage.setItem("number", newNumber);
     setIsEditing(false);
   };
 
@@ -47,8 +47,8 @@ export default function Page() {
               <td className="py-2 px-4 text-center border-b">{name}</td>
               <td className="py-2 px-4 text-center border-b">{number}</td>
               <td className="py-2 px-4 border-b">
-                <button 
-                  className="bg-blue-500 text-white py-1 px-2 rounded" 
+                <button
+                  className="bg-blue-500 text-white py-1 px-2 rounded"
                   onClick={handleEdit}
                 >
                   Edit
@@ -61,21 +61,21 @@ export default function Page() {
 
       {isEditing && (
         <div className="mt-4 flex flex-col md:flex-row md:items-center">
-          <input 
-            type="text" 
-            value={newName} 
-            onChange={(e) => setNewName(e.target.value)} 
-            placeholder="Edit name" 
+          <input
+            type="text"
+            value={newName}
+            onChange={(e) => setNewName(e.target.value)}
+            placeholder="Edit name"
             className="border py-2 px-4 rounded mb-2 md:mb-0 md:mr-2"
           />
-          <input 
-            type="text" 
-            value={newNumber} 
-            onChange={(e) => setNewNumber(e.target.value)} 
-            placeholder="Edit number" 
+          <input
+            type="text"
+            value={newNumber}
+            onChange={(e) => setNewNumber(e.target.value)}
+            placeholder="Edit number"
             className="border py-2 px-4 rounded mb-2 md:mb-0 md:mr-2"
           />
-          <button 
+          <button
             className="bg-green-500 text-white py-1 px-2 rounded"
             onClick={handleSave}
           >
